@@ -59,7 +59,8 @@ func GetByIsbnFromDouban(c *gin.Context) {
 	fetchDescription(&bookInfo, pstrBody)
 	fetchAuthorIntro(&bookInfo, pstrBody)
 
-	c.IndentedJSON(http.StatusOK, bookInfo)
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.JSON(http.StatusOK, bookInfo)
 
 	/* bytRespJson, err := json.Marshal(bookInfo)
 	if err != nil {
