@@ -1,8 +1,7 @@
-# sudo /usr/libexec/docker/cli-plugins/docker-compose up -d
-# sudo /usr/libexec/docker/cli-plugins/docker-compose stop
+# sudo docker compose up -d
+# sudo docker compose stop
 # sudo docker exec -it <container> /bin/bash
 
-version: "3"
 services:
   ccapi:
     stdin_open: true
@@ -13,9 +12,6 @@ services:
       - TZ=Asia/Shanghai # Your current timezone
       - PUID=1000 # User id
       - PGID=1000 # Group id
-    #volumes:
-    #  - /mnt/shared/container/transmission/config:/config
-    #command: ["/apps/ccapi"]
     ports:
-      - 8083:8080 # Web UI port
-    #restart: unless-stopped # This makes sure that the application restarts when it crashes
+      - 80:5003 # Web UI port
+    restart: unless-stopped # This makes sure that the application restarts when it crashes
